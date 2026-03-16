@@ -26,7 +26,7 @@ const FreeTrial = () => {
             <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 sm:mb-3">
               Start Your <span className="text-primary">Free Trial</span>
             </h1>
-            <p className="text-muted-foreground text-sm sm:text-base">Experience Iron Forge for free. No commitment, no credit card required.</p>
+            <p className="text-muted-foreground text-sm sm:text-base">Experience Iron Paradise for free. No commitment, no credit card required.</p>
           </div>
 
           <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="gradient-card rounded-lg border border-border p-6 sm:p-8 space-y-4 sm:space-y-5">
@@ -40,7 +40,7 @@ const FreeTrial = () => {
             </div>
             <div>
               <label className="block text-xs sm:text-sm text-foreground/80 mb-1 sm:mb-1.5 font-medium">Phone *</label>
-              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="w-full rounded bg-secondary border border-border px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary" placeholder="+971..." />
+              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="w-full rounded bg-secondary border border-border px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary" placeholder="077..." />
             </div>
             <div>
               <label className="block text-xs sm:text-sm text-foreground/80 mb-1 sm:mb-1.5 font-medium">Preferred Training *</label>

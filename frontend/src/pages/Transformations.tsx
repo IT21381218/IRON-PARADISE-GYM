@@ -3,7 +3,7 @@ import SectionHeading from "../components/SectionHeading";
 import { Quote } from "lucide-react";
 
 const transformations = [
-  { name: "Ahmed R.", before: "105 kg", after: "75 kg", lost: "30 kg", duration: "6 months", quote: "Iron Forge didn't just change my body — it changed my entire life. I've never felt this confident.", story: "Ahmed joined with no gym experience. Through dedicated personal training and nutrition coaching, he achieved an incredible 30kg transformation." },
+  { name: "Ahmed R.", before: "105 kg", after: "75 kg", lost: "30 kg", duration: "6 months", quote: "Iron Paradise didn't just change my body — it changed my entire life. I've never felt this confident.", story: "Ahmed joined with no gym experience. Through dedicated personal training and nutrition coaching, he achieved an incredible 30kg transformation." },
   { name: "Jessica M.", before: "82 kg", after: "62 kg", lost: "20 kg", duration: "5 months", quote: "The trainers here truly care about your success. They pushed me when I wanted to quit.", story: "Jessica combined HIIT classes with a structured meal plan. Her consistency and the team's support led to remarkable results." },
   { name: "Omar S.", before: "70 kg", after: "85 kg", gained: "15 kg muscle", duration: "8 months", quote: "I went from skinny to strong. The bodybuilding program here is second to none.", story: "Omar followed a structured hypertrophy program with progressive overload, combined with a high-protein nutrition plan." },
 ];
@@ -12,7 +12,7 @@ const Transformations = () => (
   <div className="pt-20">
     <section className="section-padding">
       <div className="container mx-auto">
-        <SectionHeading accent="Real Results" title="Client Transformations" subtitle="Real people. Real results. See what's possible at Iron Forge." />
+        <SectionHeading accent="Real Results" title="Client Transformations" subtitle="Real people. Real results. See what's possible at Iron Paradise." />
         <div className="space-y-8 sm:space-y-12 max-w-4xl mx-auto">
           {transformations.map((t, i) => (
             <motion.div key={t.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="gradient-card rounded-lg border border-border p-4 sm:p-6 md:p-8">

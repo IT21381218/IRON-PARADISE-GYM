@@ -37,7 +37,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-1 sm:gap-2">
           <Dumbbell className="h-7 sm:h-8 w-7 sm:w-8 text-primary" />
           <span className="font-heading text-lg sm:text-2xl font-bold tracking-widest text-foreground">
-            IRON <span className="text-primary">FORGE</span>
+            IRON<span className="text-primary">PARADISE</span>
           </span>
         </Link>
 

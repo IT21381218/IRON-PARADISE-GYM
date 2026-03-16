@@ -10,11 +10,11 @@ const Footer = () => (
           <Link to="/" className="flex items-center gap-2 mb-3 sm:mb-4">
             <Dumbbell className="h-6 sm:h-7 w-6 sm:w-7 text-primary" />
             <span className="font-heading text-lg sm:text-xl font-bold tracking-widest">
-              IRON <span className="text-primary">FORGE</span>
+              IRON <span className="text-primary">PARADISE</span>
             </span>
           </Link>
           <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-5">
-            Transform your body and mind at Iron Forge Gym. Premium fitness facility in Dubai with world-class trainers and equipment.
+            Transform your body and mind at Iron Paradise Gym. Premium fitness facility in Homagama with world-class trainers and equipment.
           </p>
           <div className="flex gap-2 sm:gap-3">
             {[Instagram, Facebook, Twitter, Youtube].map((Icon, i) => (
@@ -51,15 +51,15 @@ const Footer = () => (
           <div className="space-y-2 sm:space-y-3">
             <div className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
               <MapPin size={14} className="sm:w-4 sm:h-4 text-primary mt-0.5 shrink-0" />
-              <span>Downtown Dubai, UAE</span>
+              <span>No,446/D/2. Pitipana North, Homagama.</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
               <Phone size={14} className="sm:w-4 sm:h-4 text-primary shrink-0" />
-              <span>+971 4 123 4567</span>
+              <span>0777891166</span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
               <Mail size={14} className="sm:w-4 sm:h-4 text-primary shrink-0" />
-              <span>info@ironforge.ae</span>
+              <span>info@ironparadise.lk</span>
             </div>
           </div>
           <div className="mt-3 sm:mt-4">
@@ -70,7 +70,7 @@ const Footer = () => (
       </div>
 
       <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-        <p className="text-xs sm:text-sm text-muted-foreground">© 2026 Iron Forge Gym. All rights reserved.</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">© 2026 Iron Paradise Gym. All rights reserved.</p>
         <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
           <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>

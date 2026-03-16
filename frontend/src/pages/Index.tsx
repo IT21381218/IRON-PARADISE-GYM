@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Dumbbell, Target, Users, Zap, ChevronRight, Star, ArrowRight } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
 import heroImg from "../assets/hero-gym.jpg";
@@ -27,21 +27,41 @@ const plans = [
 ];
 
 const testimonials = [
-  { name: "Ahmed R.", text: "Iron Forge completely changed my life. Lost 30kg in 6 months with their incredible trainers.", rating: 5 },
-  { name: "Jessica M.", text: "Best gym in Dubai. The atmosphere, equipment, and community are unmatched.", rating: 5 },
-  { name: "Omar S.", text: "The personal training program is worth every dirham. Professional and results-driven.", rating: 5 },
+  { name: "Ahmed R.", text: "Iron Paradise completely changed my life. Lost 30kg in 6 months with their incredible trainers.", rating: 5 },
+  { name: "Jessica M.", text: "Best gym in Homagama. The atmosphere, equipment, and community are unmatched.", rating: 5 },
+  { name: "Omar S.", text: "The personal training program is worth every rupee. Professional and results-driven.", rating: 5 },
 ];
 
 const Index = () => {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 1000], [0, -200]); // Background moves slower
+  const y2 = useTransform(scrollY, [0, 1000], [0, -100]); // Content moves slightly
+  const y3 = useTransform(scrollY, [0, 1000], [0, 50]); // Floating elements move opposite
+
   return (
     <div>
       {/* Hero */}
       <section className="relative min-h-[100vh] sm:min-h-screen flex items-center overflow-hidden pt-20 xs:pt-16 sm:pt-0">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="Iron Forge Gym Interior" className="h-full w-full object-cover" />
+        <motion.div className="absolute inset-0" style={{ y: y1 }}>
+          <img src={heroImg} alt="Iron Paradise Gym Interior" className="h-full w-full object-cover" />
           <div className="gradient-overlay" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 sm:px-6">
+        </motion.div>
+
+        {/* Floating Elements */}
+        <motion.div
+          className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full blur-xl"
+          style={{ y: y3 }}
+        />
+        <motion.div
+          className="absolute top-40 right-20 w-16 h-16 bg-primary/30 rounded-full blur-lg"
+          style={{ y: y3 }}
+        />
+        <motion.div
+          className="absolute bottom-32 left-1/4 w-12 h-12 bg-primary/25 rounded-full blur-md"
+          style={{ y: y3 }}
+        />
+
+        <motion.div className="relative z-10 container mx-auto px-4 sm:px-6" style={{ y: y2 }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +69,7 @@ const Index = () => {
             className="max-w-3xl"
           >
             <span className="inline-block rounded bg-primary/20 px-2 xs:px-3 sm:px-4 py-1 sm:py-1.5 font-heading text-[10px] xs:text-xs sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-primary mb-3 xs:mb-4 sm:mb-6 border border-primary/30">
-              Dubai's Premier Fitness Destination
+              Homagama's Premier Fitness Destination
             </span>
             <h1 className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold leading-tight xs:leading-[1] sm:leading-[0.95] text-foreground mb-3 xs:mb-4 sm:mb-6">
               Forge Your
@@ -74,7 +94,7 @@ const Index = () => {
               </Link>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Stats bar */}
         <div className="absolute bottom-0 left-0 right-0 bg-card/90 backdrop-blur border-t border-border">
@@ -103,7 +123,7 @@ const Index = () => {
               More Than a Gym — A <span className="text-primary">Lifestyle</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Iron Forge was built on one principle: that fitness is for everyone. Our 20,000 sq ft facility in the heart of Dubai features cutting-edge equipment, dedicated training zones, and a community that pushes you to be your best.
+              Iron Paradise was built on one principle: that fitness is for everyone. Our facility in the heart of Homagama features cutting-edge equipment, dedicated training zones, and a community that pushes you to be your best.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
               Whether you're a beginner or a competitive athlete, our certified trainers design programs that deliver real, measurable results.
@@ -119,7 +139,7 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="relative rounded-lg overflow-hidden aspect-[4/3] order-first md:order-last"
           >
-            <img src={heroImg} alt="Iron Forge Gym" className="w-full h-full object-cover" />
+            <img src={heroImg} alt="Iron Paradise Gym" className="w-full h-full object-cover" />
             <div className="absolute inset-0 border-2 border-primary/20 rounded-lg" />
           </motion.div>
         </div>
@@ -272,7 +292,7 @@ const Index = () => {
               Ready to <span className="text-primary neon-text">Transform</span>?
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-              Start your free trial today and experience the Iron Forge difference.
+              Start your free trial today and experience the Iron Paradise difference.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

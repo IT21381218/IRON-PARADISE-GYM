@@ -30,7 +30,7 @@ const Contact = () => {
               </div>
               <div>
                 <label className="block text-xs sm:text-sm text-foreground/80 mb-1 sm:mb-1.5 font-medium">Phone</label>
-                <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full rounded bg-secondary border border-border px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary" placeholder="+971..." />
+                <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full rounded bg-secondary border border-border px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary" placeholder="077..." />
               </div>
               <div>
                 <label className="block text-xs sm:text-sm text-foreground/80 mb-1 sm:mb-1.5 font-medium">Message</label>
@@ -44,9 +44,9 @@ const Contact = () => {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6 sm:space-y-8">
               <div className="gradient-card rounded-lg border border-border p-4 sm:p-6 space-y-4 sm:space-y-5">
                 {[
-                  { icon: MapPin, label: "Address", value: "Downtown Dubai, Sheikh Zayed Road, UAE" },
-                  { icon: Phone, label: "Phone", value: "+971 4 123 4567" },
-                  { icon: Mail, label: "Email", value: "info@ironforge.ae" },
+                  { icon: MapPin, label: "Address", value: "No,446/D/2. Pitipana North, Homagama." },
+                  { icon: Phone, label: "Phone", value: "0777891166" },
+                  { icon: Mail, label: "Email", value: "info@ironparadise.lk" },
                   { icon: Clock, label: "Hours", value: "Mon-Fri: 5AM-11PM | Sat-Sun: 6AM-10PM" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-3 sm:gap-4">
@@ -62,13 +62,13 @@ const Contact = () => {
               </div>
               <div className="rounded-lg overflow-hidden border border-border aspect-video">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178510653!2d55.2727!3d25.1972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDExJzUwLjAiTiA1NcKwMTYnMjEuNyJF!5e0!3m2!1sen!2sae!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7438.980141150109!2d80.0216561270331!3d6.841369565153233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253001fd93c37%3A0xf2377ce78c674047!2sIRON%20PARADISE%20GYM!5e0!3m2!1sen!2slk!4v1773641865232!5m2!1sen!2slk"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  title="Iron Forge Gym Location"
+                  title="Iron Paradise Gym Location"
                 />
               </div>
             </motion.div>
