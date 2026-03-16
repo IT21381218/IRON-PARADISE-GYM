@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useInView } from "framer-motion";
 import { Dumbbell, Target, Users, Zap, ChevronRight, Star, ArrowRight } from "lucide-react";
 import SectionHeading from "../components/SectionHeading";
 import heroImg from "../assets/hero-gym.jpg";
 import trainer1 from "../assets/trainer-1.jpg";
 import trainer2 from "../assets/trainer-2.jpg";
 import trainer3 from "../assets/trainer-3.jpg";
+import { useEffect, useRef } from "react";
 
 const services = [
   { icon: Dumbbell, title: "Strength Training", desc: "Build raw power with our state-of-the-art equipment and expert programming." },
@@ -31,6 +32,30 @@ const testimonials = [
   { name: "Jessica M.", text: "Best gym in Homagama. The atmosphere, equipment, and community are unmatched.", rating: 5 },
   { name: "Omar S.", text: "The personal training program is worth every rupee. Professional and results-driven.", rating: 5 },
 ];
+
+// Animated Counter Component
+const AnimatedCounter = ({ value, suffix = "", duration = 2000 }: { value: number; suffix?: string; duration?: number }) => {
+  const nodeRef = useRef<HTMLParagraphElement>(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, { duration: duration });
+  const isInView = useInView(nodeRef, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [motionValue, value, isInView]);
+
+  useEffect(() => {
+    springValue.on("change", (latest) => {
+      if (nodeRef.current) {
+        nodeRef.current.textContent = Math.floor(latest).toLocaleString() + suffix;
+      }
+    });
+  }, [springValue, suffix]);
+
+  return <p ref={nodeRef} className="font-heading text-lg sm:text-2xl md:text-3xl font-bold text-primary">0{suffix}</p>;
+};
 
 const Index = () => {
   const { scrollY } = useScroll();
@@ -68,16 +93,14 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <span className="inline-block rounded bg-primary/20 px-2 xs:px-3 sm:px-4 py-1 sm:py-1.5 font-heading text-[10px] xs:text-xs sm:text-xs font-semibold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-primary mb-3 xs:mb-4 sm:mb-6 border border-primary/30">
-              Homagama's Premier Fitness Destination
-            </span>
+
             <h1 className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold leading-tight xs:leading-[1] sm:leading-[0.95] text-foreground mb-3 xs:mb-4 sm:mb-6">
               Forge Your
               <br />
               <span className="text-primary neon-text">Strongest</span> Self
             </h1>
             <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-foreground/70 max-w-xl mb-5 xs:mb-6 sm:mb-8 font-body leading-relaxed">
-              World-class equipment, elite trainers, and a relentless community. Your transformation starts here.
+              Come and build your body
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
@@ -100,13 +123,13 @@ const Index = () => {
         <div className="absolute bottom-0 left-0 right-0 bg-card/90 backdrop-blur border-t border-border">
           <div className="container mx-auto grid grid-cols-2 sm:flex sm:justify-around gap-2 sm:gap-0 py-4 sm:py-5 px-4">
             {[
-              { num: "5000+", label: "Members" },
-              { num: "50+", label: "Classes Weekly" },
-              { num: "15+", label: "Expert Trainers" },
-              { num: "10+", label: "Years Experience" },
+              { num: 5000, suffix: "+", label: "Members" },
+              { num: 50, suffix: "+", label: "Classes Weekly" },
+              { num: 15, suffix: "+", label: "Expert Trainers" },
+              { num: 10, suffix: "+", label: "Years Experience" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-heading text-lg sm:text-2xl md:text-3xl font-bold text-primary">{s.num}</p>
+                <AnimatedCounter value={s.num} suffix={s.suffix} />
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">{s.label}</p>
               </div>
             ))}
@@ -171,6 +194,41 @@ const Index = () => {
             <Link to="/programs" className="inline-flex items-center gap-2 text-primary font-heading text-sm uppercase tracking-wider font-semibold hover:gap-3 transition-all">
               View All Programs <ArrowRight size={16} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BMI Calculator Section */}
+      <section className="section-padding bg-card/50">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary mb-6">
+                <Target size={32} />
+              </div>
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Know Your <span className="text-primary">BMI Score</span>
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+                Calculate your Body Mass Index to understand your current fitness level and get personalized recommendations for your health journey.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link
+                  to="/bmi-calculator"
+                  className="inline-flex items-center gap-2 rounded bg-primary px-8 py-4 font-heading text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:shadow-[var(--neon-glow-strong)] hover:scale-105"
+                >
+                  Calculate BMI <ArrowRight size={18} />
+                </Link>
+                <div className="text-sm text-muted-foreground">
+                  Free • Instant Results • Personalized Insights
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -314,16 +372,16 @@ const Index = () => {
 
       {/* Newsletter */}
       <section className="section-padding bg-card">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">Stay in the Loop</h3>
-          <p className="text-muted-foreground mb-6">Get workout tips, nutrition advice, and exclusive offers delivered to your inbox.</p>
-          <div className="flex gap-3">
+        <div className="container mx-auto max-w-2xl text-center px-4 sm:px-6">
+          <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3">Stay in the Loop</h3>
+          <p className="text-muted-foreground text-sm sm:text-base mb-6">Get workout tips, nutrition advice, and exclusive offers delivered to your inbox.</p>
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="email"
               placeholder="Enter your email"
               className="flex-1 rounded bg-secondary border border-border px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary"
             />
-            <button className="rounded bg-primary px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-primary-foreground hover:shadow-[var(--neon-glow)] transition-all">
+            <button className="rounded bg-primary px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider text-primary-foreground hover:shadow-[var(--neon-glow)] transition-all whitespace-nowrap">
               Subscribe
             </button>
           </div>
